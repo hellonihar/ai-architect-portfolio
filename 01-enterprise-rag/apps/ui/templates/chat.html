@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise RAG — Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6">RAG Chat</h1>
+        <div id="chat-box" class="bg-white p-4 rounded shadow mb-4 h-96 overflow-y-auto"></div>
+        <div class="flex gap-2">
+            <input type="text" id="message" class="flex-1 p-3 border rounded" placeholder="Type your message...">
+            <button id="send" class="bg-blue-600 text-white px-6 py-3 rounded">Send</button>
+        </div>
+    </div>
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        document.getElementById('send').addEventListener('click', async () => {
+            const msg = document.getElementById('message').value;
+            if (!msg) return;
+            chatBox.innerHTML += `<div class="text-right mb-2"><span class="bg-blue-100 p-2 rounded">${msg}</span></div>`;
+            document.getElementById('message').value = '';
+            const res = await fetch('/api/chat/', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({message: msg}) });
+            const data = await res.json();
+            chatBox.innerHTML += `<div class="text-left mb-2"><span class="bg-gray-100 p-2 rounded">${data.response}</span></div>`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "enterprise-rag",
+  "version": "1.0.0",
+  "description": "Enterprise RAG Assistant — Django + LangChain + Groq",
+  "scripts": {
+    "dev": "python manage.py runserver",
+    "migrate": "python manage.py migrate",
+    "test": "python manage.py test"
+  },
+  "dependencies": {}
+}

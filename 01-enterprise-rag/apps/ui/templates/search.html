@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise RAG — Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6">Semantic Search</h1>
+        <input type="text" id="query" class="w-full p-3 border rounded mb-4" placeholder="Ask a question...">
+        <div id="results"></div>
+    </div>
+    <script>
+        document.getElementById('query').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                fetch(`/api/indexing/search/?q=${encodeURIComponent(this.value)}`)
+                    .then(r => r.json())
+                    .then(data => {
+                        const div = document.getElementById('results');
+                        div.innerHTML = data.results.map(r => `<div class="bg-white p-4 mb-2 rounded shadow">${r.text || r.id} <span class="text-sm text-gray-500">score: ${r.score.toFixed(3)}</span></div>`).join('');
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
