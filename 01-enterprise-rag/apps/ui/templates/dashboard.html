@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise RAG — Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-7xl mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-8">Enterprise RAG Dashboard</h1>
+        <div class="grid grid-cols-4 gap-4 mb-8">
+            <div class="bg-white p-4 rounded shadow">Total Documents: <span id="doc-count">—</span></div>
+            <div class="bg-white p-4 rounded shadow">Indexed Chunks: <span id="chunk-count">—</span></div>
+            <div class="bg-white p-4 rounded shadow">Avg Latency: <span id="avg-latency">—</span></div>
+            <div class="bg-white p-4 rounded shadow">Queries Today: <span id="query-count">—</span></div>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+            <h2 class="text-xl font-semibold mb-4">Recent Documents</h2>
+            <table class="w-full" id="documents-table">
+                <thead><tr><th>Title</th><th>Status</th><th>Uploaded</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        fetch('/api/ingestion/documents/')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('doc-count').textContent = data.length;
+                const tbody = document.querySelector('#documents-table tbody');
+                data.forEach(doc => {
+                    tbody.innerHTML += `<tr><td>${doc.title}</td><td>${doc.status}</td><td>${new Date(doc.uploaded_at).toLocaleDateString()}</td></tr>`;
+                });
+            });
+    </script>
+</body>
+</html>
