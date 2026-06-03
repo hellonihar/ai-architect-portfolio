@@ -1,24 +1,37 @@
-# Enterprise RAG Assistant
+# Enterprise Retrieval-Augmented Generation (RAG) System
 
-## Problem
-Large enterprises struggle with knowledge discovery across siloed document repositories. Employees waste hours searching for information buried in PDFs, internal wikis, and databases.
+## Problem Statement
+Enterprises struggle with knowledge retrieval across siloed systems. Traditional search lacks semantic depth, while LLMs hallucinate without grounding.
 
-## Design
-A retrieval-augmented generation (RAG) pipeline that indexes enterprise documents into a vector store and serves answers via a chat interface with citation grounding.
+## Solution
+A RAG pipeline that combines semantic embeddings with hybrid retrieval, integrated observability, and governance.
 
-## Architecture
-- **Ingestion**: Document parsing (PDF, Word, HTML) -> chunking -> embedding -> vector database
-- **Retrieval**: Hybrid search (semantic + keyword) with re-ranking
-- **Generation**: LLM with retrieved context + prompt template for grounded answers
-- **Orchestration**: LangChain/LlamaIndex for pipeline chaining
+## Design Overview
 
-## Best Practices
-- Chunk overlap strategy to preserve context boundaries
-- Multi-hop retrieval for complex queries
-- Citation enforcement to reduce hallucination
-- Feedback loop for continuous relevance tuning
+| Layer | Description |
+|-------|-------------|
+| **Data Layer** | Document ingestion (PDFs, contracts, CRM exports) |
+| **Indexing Layer** | Hybrid retrieval (BM25 + embeddings) |
+| **Vector Store** | Pinecone/Weaviate for scalability |
+| **LLM Layer** | GPT/Claude for contextual synthesis |
+| **Orchestration** | LangChain/LlamaIndex pipelines |
+| **Observability** | Prometheus + Grafana dashboards for latency, drift, and cost |
+| **Governance** | Access control, audit logs, bias detection |
+
+## Applied Best Practices
+- **Hybrid retrieval** ensures both keyword precision and semantic recall
+- **Eval harness** (Ragas) for continuous quality measurement
+- **Caching and batching** reduce inference costs
+- **Modular design** enables reusable components across departments
+
+## Alternatives Considered
+| Option | Trade-off |
+|--------|-----------|
+| **FAISS** | Lightweight, cost-effective for local deployments |
+| **ElasticSearch** | Strong for text-heavy corpora, but weaker in semantic embeddings |
+| **Milvus** | Open-source, scalable, but heavier ops overhead |
 
 ## Limitations
-- Requires ongoing index maintenance as documents change
-- Sensitive to embedding model quality and chunking strategy
-- Latency trade-off between retrieval depth and response time
+- Latency increases with large-scale queries
+- Requires strong data governance to prevent leakage
+- Cost optimization critical for enterprise-scale deployments
