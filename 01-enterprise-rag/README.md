@@ -8,6 +8,8 @@ A RAG pipeline that combines semantic embeddings with hybrid retrieval, integrat
 
 ## Design Overview
 
+![Architecture Diagram](diagrams/image.png)
+
 | Layer | Description |
 |-------|-------------|
 | **Data Layer** | Document ingestion (PDFs, contracts, CRM exports) |
