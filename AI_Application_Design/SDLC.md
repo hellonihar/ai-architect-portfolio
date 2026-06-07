@@ -5,7 +5,15 @@
 The Software Development Life Cycle (SDLC) for AI projects extends the traditional SDLC with data-centric, model-centric, and ethical considerations unique to artificial intelligence. While the core phases — Plan, Define, Design, Build, Test, Deploy, Maintain — remain, each phase requires significant adaptation for AI workloads.
 
 ---
+## Key Differences vs Traditional SDLC
+Data‑centric: AI projects depend heavily on data quality and preparation.
 
+Iterative model training: Unlike static code, models require retraining as data evolves.
+
+Governance: Bias, fairness, and explainability are critical checkpoints.
+
+Continuous monitoring: AI systems degrade over time due to data drift, requiring proactive maintenance.
+---
 ## 1. Planning & Feasibility Assessment
 
 **Goal:** Determine if AI is the right solution and scope the project.
