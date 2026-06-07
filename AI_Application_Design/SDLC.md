@@ -13,6 +13,7 @@ Iterative model training: Unlike static code, models require retraining as data 
 Governance: Bias, fairness, and explainability are critical checkpoints.
 
 Continuous monitoring: AI systems degrade over time due to data drift, requiring proactive maintenance.
+
 ---
 ## 1. Planning & Feasibility Assessment
 
