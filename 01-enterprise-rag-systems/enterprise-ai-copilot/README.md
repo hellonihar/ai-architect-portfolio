@@ -1,19 +1,19 @@
 # Enterprise AI Copilot
 
-RAG-powered enterprise assistant using LangChain, Pinecone, and Groq.
+RAG-powered enterprise assistant using LangChain, Pinecone, and Qwen.
 
 ## Architecture
 
 ```
 User → Streamlit Frontend → FastAPI Backend → Pinecone (Vector DB)
                             → LangChain (RAG Pipeline)
-                            → Groq (LLM Inference)
+                            → Qwen (LLM Inference)
 ```
 
 ## Prerequisites
 
 - Python 3.11+
-- A [Groq API key](https://console.groq.com)
+- A [Groq API key](https://console.groq.com) (for Qwen access)
 - A [Pinecone API key](https://www.pinecone.io)
 
 ## Quick Start
@@ -69,7 +69,7 @@ streamlit run app.py --server.port=8501
 | Backend | FastAPI (Python) |
 | RAG Framework | LangChain |
 | Vector Store | Pinecone |
-| LLM | Groq (Mixtral 8x7b) |
+| LLM | Qwen (Qwen3-32b via Groq) |
 | Embeddings | BGE (sentence-transformers) |
 | Frontend | Streamlit |
 | Containerization | Docker + docker-compose |
