@@ -6,13 +6,13 @@ The Software Development Life Cycle (SDLC) for AI projects extends the tradition
 
 ---
 ## Key Differences vs Traditional SDLC
-Data‑centric: AI projects depend heavily on data quality and preparation.
+**Data‑centric**: AI projects depend heavily on data quality and preparation.
 
-Iterative model training: Unlike static code, models require retraining as data evolves.
+**Iterative model training**: Unlike static code, models require retraining as data evolves.
 
-Governance: Bias, fairness, and explainability are critical checkpoints.
+**Governance**: Bias, fairness, and explainability are critical checkpoints.
 
-Continuous monitoring: AI systems degrade over time due to data drift, requiring proactive maintenance.
+**Continuous monitoring**: AI systems degrade over time due to data drift, requiring proactive maintenance.
 
 ---
 ## 1. Planning & Feasibility Assessment
