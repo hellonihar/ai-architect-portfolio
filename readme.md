@@ -55,6 +55,6 @@ The categories are intentionally cross-cutting. A single solution often spans mu
 
 **GitHub:** [github.com/hellonihar/ai-architect-portfolio](https://github.com/hellonihar/ai-architect-portfolio)
 
-**LinkedIn:** [Nihar's Profile](https://linkedin.com/in/hellonihar)
+**LinkedIn:** [Nihar's Profile](https://linkedin.com/in/nohta)
 
 **Blog/Articles:** Coming soon — insights on AI architecture, governance, and the low-code to AI transition.
