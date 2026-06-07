@@ -88,6 +88,8 @@ Score each vendor on a scale of 1–5 per criterion. Weight criteria by project 
 | **Data Privacy** — no training on customer data, on-prem / VPC deployment option | | | | | |
 | **Portability** — open formats (ONNX), standard APIs, no proprietary lock-in | | | | | |
 | **Ecosystem** — native integrations (vector DBs, monitoring, CI/CD, data sources) | | | | | |
+| **Integration Readiness** — SDK/client library quality, REST API completeness, auth setup effort, onboarding time to first successful call | | | | | |
+| **Business Alignment** — strategic fit, vendor roadmap alignment, contract flexibility, enterprise agreement terms, long-term partnership viability | | | | | |
 | **Support & Community** — SLA, documentation quality, community size, MSA terms | | | | | |
 | **RAI & Safety Tooling** — content filters, jailbreak detection, bias auditing | | | | | |
 | **Total** | | | | | |
