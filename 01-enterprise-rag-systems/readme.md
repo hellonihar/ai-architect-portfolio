@@ -8,7 +8,7 @@ Retrieval-augmented generation pipelines that make enterprise knowledge searchab
 |-------|------|----------------|--------|
 | L0 | Naive RAG | Embed → Vector Search → Top-k → LLM | ✅ Done |
 | L1 | Pre-Retrieval Optimization | Query rewriting, HyDE, multi-query, query decomposition | ✅ Done |
-| L2 | Post-Retrieval Optimization | Reranking, context compression, small-to-big | 🔧 Partial |
+| L2 | Post-Retrieval Optimization | Reranking, context compression, small-to-big, sliding window | ✅ Done |
 | L3 | Hybrid & Multi-Route Retrieval | Sparse (BM25) + dense (vector), RRF fusion, query routing | 🔜 Planned |
 | L4 | Agentic / Self-Guided RAG | Self-RAG, CRAG, Adaptive RAG, multi-hop | ❌ Not started |
 | L5 | Graph RAG | Entity extraction, community detection, graph + vector hybrid | ❌ Not started |
@@ -26,10 +26,10 @@ Improve the query before search:
 
 ### L2 — Post-Retrieval Optimization
 Improve results before generation:
-- **Reranking** — cross-encoder re-scores candidates (stubbed but not wired)
-- **Context compression** — LLM removes irrelevant passages
-- **Small-to-big** — retrieve small chunks, serve parent chunks for richness
-- **Sliding window** — dynamic context sizing
+- **Reranking** — cross-encoder (`MiniLM-L-6-v2`) re-scores retrieved chunks for accurate relevance ordering
+- **Context compression** — LLM filters irrelevant passages, condenses redundant ones, drops noise
+- **Small-to-big** — retrieve small precise chunks, expand to parent documents for richness
+- **Sliding window** — dynamic context sizing based on relevance thresholds and token budget
 
 ### L3 — Hybrid & Multi-Route Retrieval
 Multiple retrieval signals combined:
@@ -63,6 +63,7 @@ Beyond text:
 |-------|---------|-------------|--------|
 | L0 | [Enterprise AI Copilot](./enterprise-ai-copilot) | Full-stack RAG assistant — LangChain, Pinecone, Groq (Qwen3-32b) | [View on GitHub](https://github.com/hellonihar/ai-architect-portfolio/tree/main/01-enterprise-rag-systems/enterprise-ai-copilot) |
 | L1 | [Query Refinery](./L1-query-refinery-pre-retrieval-optimization) | Pre-retrieval optimization — query rewriting, HyDE, multi-query, decomposition | [View on GitHub](https://github.com/hellonihar/ai-architect-portfolio/tree/main/01-enterprise-rag-systems/L1-query-refinery-pre-retrieval-optimization) |
+| L2 | [Result Refiner](./L2-result-refiner-post-retrieval-optimization) | Post-retrieval optimization — reranking, compression, small-to-big, sliding window | [View on GitHub](https://github.com/hellonihar/ai-architect-portfolio/tree/main/01-enterprise-rag-systems/L2-result-refiner-post-retrieval-optimization) |
 
 ## Quick Start
 
@@ -81,3 +82,4 @@ docker compose up --build
 - Copilot Backend: `http://localhost:8000`
 - Copilot Frontend: `http://localhost:8501`
 - Refinery API: `http://localhost:8001`
+- Result Refiner API: `http://localhost:8001` | Frontend: `http://localhost:8502`
