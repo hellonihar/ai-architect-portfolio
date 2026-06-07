@@ -7,7 +7,7 @@ Retrieval-augmented generation pipelines that make enterprise knowledge searchab
 | Level | Name | Key Techniques | Status |
 |-------|------|----------------|--------|
 | L0 | Naive RAG | Embed → Vector Search → Top-k → LLM | ✅ Done |
-| L1 | Pre-Retrieval Optimization | Query rewriting, HyDE, multi-query, query decomposition | 🔜 Planned |
+| L1 | Pre-Retrieval Optimization | Query rewriting, HyDE, multi-query, query decomposition | ✅ Done |
 | L2 | Post-Retrieval Optimization | Reranking, context compression, small-to-big | 🔧 Partial |
 | L3 | Hybrid & Multi-Route Retrieval | Sparse (BM25) + dense (vector), RRF fusion, query routing | 🔜 Planned |
 | L4 | Agentic / Self-Guided RAG | Self-RAG, CRAG, Adaptive RAG, multi-hop | ❌ Not started |
@@ -19,10 +19,10 @@ Embed → Vector search → Top-k → LLM. The current project does this (Pineco
 
 ### L1 — Pre-Retrieval Optimization
 Improve the query before search:
-- **Query rewriting / expansion** — rephrase ambiguous queries (already have `CONDENSE_QUESTION_PROMPT` scaffold)
-- **HyDE** — embed a hypothetical answer instead of the query
-- **Multi-query** — N paraphrases searched in parallel, results deduplicated
-- **Query decomposition** — split multi-part questions into sub-queries
+- **Query rewriting / expansion** — rephrase ambiguous queries using conversation history
+- **HyDE** — generate a hypothetical document, embed it, search with that embedding
+- **Multi-query** — N paraphrases generated and searched in parallel, results deduplicated
+- **Query decomposition** — split multi-part questions into atomic sub-queries
 
 ### L2 — Post-Retrieval Optimization
 Improve results before generation:
@@ -57,3 +57,27 @@ Beyond text:
 - Structured extraction from PDF tables
 - VLM-based generation with visual context
 
+## Projects
+
+| Level | Project | Description | GitHub |
+|-------|---------|-------------|--------|
+| L0 | [Enterprise AI Copilot](./enterprise-ai-copilot) | Full-stack RAG assistant — LangChain, Pinecone, Groq (Qwen3-32b) | [View on GitHub](https://github.com/hellonihar/ai-architect-portfolio/tree/main/01-enterprise-rag-systems/enterprise-ai-copilot) |
+| L1 | [Query Refinery](./L1-query-refinery-pre-retrieval-optimization) | Pre-retrieval optimization — query rewriting, HyDE, multi-query, decomposition | [View on GitHub](https://github.com/hellonihar/ai-architect-portfolio/tree/main/01-enterprise-rag-systems/L1-query-refinery-pre-retrieval-optimization) |
+
+## Quick Start
+
+```bash
+# Enterprise AI Copilot (L0)
+cd enterprise-ai-copilot
+cp .env.example .env
+docker compose up --build
+
+# Query Refinery (L1)
+cd L1-query-refinery-pre-retrieval-optimization
+cp .env.example .env
+docker compose up --build
+```
+
+- Copilot Backend: `http://localhost:8000`
+- Copilot Frontend: `http://localhost:8501`
+- Refinery API: `http://localhost:8001`
