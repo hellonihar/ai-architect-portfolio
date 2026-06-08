@@ -18,13 +18,14 @@ Backend at `http://localhost:8000`, Frontend at `http://localhost:8501`.
 To run without Docker:
 
 ```bash
-uv venv --python 3.12
-uv sync
-uv run python main.py              # Terminal 1: backend
+# Terminal 1: Backend (cd into backend/ for import resolution)
+cd backend
+uv run uvicorn api.main:app --reload --port 8000
 
+# Terminal 2: Frontend
 cd frontend
 pip install -r requirements.txt
-streamlit run app.py                # Terminal 2: frontend
+streamlit run app.py
 ```
 
 ---
