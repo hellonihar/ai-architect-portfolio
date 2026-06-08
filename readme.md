@@ -1,6 +1,6 @@
 👋 Hi, I'm Nihar — Senior Architect Transitioning from Low Code to AI
 
-After years designing enterprise solutions on low-code platforms (Power Platform, Mendix), I made a deliberate move into AI architecture. This portfolio captures that journey through architecture designs, reference guides, and applied AI patterns — business-first, production-ready, and governance-aware.
+After years designing enterprise solutions on low-code platforms (Appian, OutSystems, Cordys), I made a deliberate move into AI architecture. This portfolio captures that journey through architecture designs, reference guides, and applied AI patterns — business-first, production-ready, and governance-aware.
 
 ---
 
