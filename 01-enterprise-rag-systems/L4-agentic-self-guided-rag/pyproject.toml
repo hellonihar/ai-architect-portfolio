@@ -1,0 +1,22 @@
+[project]
+name = "l4-agentic-self-guided-rag"
+version = "0.1.0"
+description = "L4 — Agentic / Self-Guided RAG: Self-RAG, CRAG, Adaptive RAG, Multi-hop"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "httpx>=0.27.0",
+    "langchain-groq>=0.2.1",
+    "langchain-huggingface>=0.1.2",
+    "numpy>=1.26.0",
+    "pydantic-settings>=2.5.0",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-mock>=3.14.0",
+    "rank-bm25>=0.2.2",
+    "requests>=2.31.0",
+    "sentence-transformers>=3.1.0",
+    "streamlit>=1.56.0",
+    "uvicorn[standard]>=0.30.0",
+]
